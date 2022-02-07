@@ -10,6 +10,7 @@ namespace SweetAlertSharp.Enums
     {
         OK = 0,
         OKCancel = 1,
-        YesNo = 2
+        YesNo = 2,
+        YesNoCancel = 3
     }
 }

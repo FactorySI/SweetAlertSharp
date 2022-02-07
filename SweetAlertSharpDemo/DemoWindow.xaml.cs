@@ -80,5 +80,12 @@ namespace SweetAlertSharpDemo
 
             var reuslt = alert.ShowDialog();
         }
+
+        private void Event_YesNoCancel(object sender, RoutedEventArgs e)
+        {
+            var res = SweetAlert.Show("Caption", "Content", new []{"YES","NO", "CANCEL"}, SweetAlertButton.YesNoCancel, SweetAlertImage.QUESTION);
+            var a = res;
+        }
+
     }
 }

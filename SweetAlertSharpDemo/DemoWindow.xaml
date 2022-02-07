@@ -4,14 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         Title="DemoWindow"
-        Height="450"
+        Height="468"
         Width="800">
-    
-    <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+
+    <StackPanel Orientation="Vertical" VerticalAlignment="Center" Height="423" Margin="0,10,0,4">
         <Button VerticalAlignment="Center" HorizontalAlignment="Center" Padding="20" Click="Event_Click" Margin="0,0,0,10">START</Button>
         <Button VerticalAlignment="Center" HorizontalAlignment="Center" Padding="20" Click="Event_Information" Margin="0,0,0,10">INFORMATION</Button>
         <Button VerticalAlignment="Center" HorizontalAlignment="Center" Padding="20" Click="Event_YesNo" Margin="0,0,0,10">YES NO</Button>
         <Button VerticalAlignment="Center" HorizontalAlignment="Center" Padding="20" Click="Event_Custom" Margin="0,0,0,10">CUSTOM BUTTON</Button>
         <Button VerticalAlignment="Center" HorizontalAlignment="Center" Padding="20" Click="Event_Delay">DELAY</Button>
+        <Button VerticalAlignment="Center" HorizontalAlignment="Center" Padding="20" Click="Event_YesNoCancel" Margin="0,0,0,10" Content="YES NO CANCEL"/>
     </StackPanel>
 </Window>

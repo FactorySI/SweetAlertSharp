@@ -117,8 +117,20 @@
                             </Style.Triggers>
                         </Style>
                     </StackPanel.Style>
-                    
-                    <Button x:Name="_OkButton" Style="{StaticResource BlueButton}" Content="{Binding OkText, ElementName=_SweetAlert}" Click="Event_Click_Button" />
+
+                    <Button x:Name="_OkButton" Style="{StaticResource GreenButton}" Content="{Binding OkText, ElementName=_SweetAlert}" Click="Event_Click_Button" />
+                    <Button x:Name="_NoButton" Content="{Binding NoText, ElementName=_SweetAlert}" Click="Event_Click_Button">
+                        <Button.Style>
+                            <Style BasedOn="{StaticResource BlueButton}" TargetType="Button">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding MsgButton, ElementName=_SweetAlert}" Value="{x:Static enums:SweetAlertButton.YesNoCancel}">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
                     <Button x:Name="_CancelButton" Content="{Binding CancelText, ElementName=_SweetAlert}" Click="Event_Click_Button">
                         <Button.Style>
                             <Style BasedOn="{StaticResource RedButton}" TargetType="Button">
@@ -130,6 +142,10 @@
                                     <DataTrigger Binding="{Binding MsgButton, ElementName=_SweetAlert}" Value="{x:Static enums:SweetAlertButton.YesNo}">
                                         <Setter Property="Visibility" Value="Visible" />
                                     </DataTrigger>
+                                    <DataTrigger Binding="{Binding MsgButton, ElementName=_SweetAlert}" Value="{x:Static enums:SweetAlertButton.YesNoCancel}">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+
                                 </Style.Triggers>
                             </Style>
                         </Button.Style>

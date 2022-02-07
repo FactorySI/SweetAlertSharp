@@ -33,6 +33,7 @@ namespace SweetAlertSharp
         private string _message;
         private string _okText = "OK";
         private string _cancelText = "Cancel";
+        private string _noText = "NO";
 
         private SweetAlertButton _boxButton = SweetAlertButton.OK;
         private SweetAlertImage _boxImage = SweetAlertImage.NONE;
@@ -77,6 +78,11 @@ namespace SweetAlertSharp
             if (sender == _OkButton)
             {
                 Result = SweetAlertResult.OK;
+            }
+
+            if (sender == _NoButton)
+            {
+                Result = SweetAlertResult.cNO;
             }
 
             Close();
@@ -180,6 +186,19 @@ namespace SweetAlertSharp
             }
         }
 
+
+        public string NoText
+        {
+            get => _noText;
+            set
+            {
+                _noText = value;
+
+                NotifyPropertyChanged("NoText");
+            }
+        }
+
+
         public string CancelText
         {
             get => _cancelText;
@@ -210,6 +229,22 @@ namespace SweetAlertSharp
         #endregion
 
         #region Public Methods
+
+        public static SweetAlertResult Show(string caption, string content)
+        {
+            var alert = new SweetAlert
+            {
+                Caption = caption,
+                Message = content,
+                MsgButton = SweetAlertButton.OK,
+                MsgImage = SweetAlertImage.NONE,
+            };
+
+            return alert.ShowDialog();
+        }
+
+
+
         public static SweetAlertResult Show(string caption, string content, SweetAlertButton msgButton = SweetAlertButton.OK, SweetAlertImage msgImage = SweetAlertImage.NONE)
         {
             var alert = new SweetAlert
@@ -222,6 +257,48 @@ namespace SweetAlertSharp
 
             return alert.ShowDialog();
         }
+
+        public static SweetAlertResult Show(string caption, string content,  SweetAlertImage msgImage = SweetAlertImage.NONE)
+        {
+            var alert = new SweetAlert
+            {
+                Caption = caption,
+                Message = content,
+                MsgButton = SweetAlertButton.OK,
+                MsgImage = msgImage,
+            };
+
+            return alert.ShowDialog();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="caption"></param>
+        /// <param name="content"></param>
+        /// <param name="descriptionButon">[0] = 'OK' | [1] = 'NO' | [2] = 'CANCEL' </param>
+        /// <param name="msgButton"></param>
+        /// <param name="msgImage"></param>
+        /// <returns></returns>
+        public static SweetAlertResult Show(string caption, string content, string[] descriptionButon = null, SweetAlertButton msgButton = SweetAlertButton.OK, SweetAlertImage msgImage = SweetAlertImage.NONE)
+        {
+            if (descriptionButon == null)
+                descriptionButon = new[] { "OK", "NO", "CANCEL" };
+
+            var alert = new SweetAlert
+            {
+                Caption = caption,
+                Message = content,
+                MsgButton = msgButton,
+                MsgImage = msgImage,
+                OkText = descriptionButon[0],
+                NoText = descriptionButon[1],
+                CancelText = descriptionButon[2]
+            };
+
+            return alert.ShowDialog();
+        }
+
 
         public new SweetAlertResult ShowDialog()
         {
