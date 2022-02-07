@@ -14,5 +14,6 @@ namespace SweetAlertSharp.Enums
         WARNING,
         INFORMATION,
         QUESTION,
+        QUESTIONYesNOCancel
     }
 }
