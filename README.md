@@ -27,6 +27,12 @@ const result = SweetAlert.Show("Caption", "Content");
 const result = SweetAlert.Show("Caption", "Content", SweetAlertButton.YesNo);
 ```
 
+**Yes No Cancel**
+
+```cs
+ const resul = SweetAlert.Show("Caption", "Content", new []{"YES","NO", "CANCEL"}, SweetAlertButton.YesNoCancel, SweetAlertImage.QUESTION);
+```
+
 **With Icon**
 
 ```cs
@@ -83,3 +89,5 @@ Task.Run(async () =>
 
 var reuslt = alert.ShowDialog();
 ```
+
+
